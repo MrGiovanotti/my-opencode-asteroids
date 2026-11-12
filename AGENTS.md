@@ -16,3 +16,4 @@ Asteroids clone in plain HTML5 Canvas. **All game logic lives in `game.js`** (si
 - Input uses a `justPressed` map consumed by `pressed(code)` (edge-detection: calling it clears the flag). Use `keys[code]` for held state, `pressed()` for single-fire actions like shooting.
 - UI text, code comments, and README are in Spanish — keep new strings and comments consistent.
 - Structure inside `game.js`: classes `Bullet`, `Asteroid`, `Ship`, `Particle`, then game state functions, then `update(dt)` / `draw()`, with the `requestAnimationFrame` loop at the bottom.
+- Ship skins are data-driven: each entry in the `SKINS` array defines `id`, `name`, `color`, `flame`, and `verts` (polygon points, nose on +X). Add a new skin by appending an object there — `Ship.draw()`, `drawLifeIcon()`, and bullet spawn distance all derive from the active skin. Selection cycles with `C` and persists in `localStorage` (`asteroids.skin`).
